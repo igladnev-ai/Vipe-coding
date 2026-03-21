@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Два пончика и чашка кофе</title>
+  <style>
+    /* Общие стили */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #fffaf3;
+      color: #3b2f2f;
+    }
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background-color: rgba(85, 53, 33, 0.95);
+      padding: 15px 40px;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s ease;
+    }
+
+    header:hover {
+      background-color: rgba(85, 53, 33, 1);
+    }
+
+    header h1 {
+      color: #fcead1;
+      font-size: 1.4em;
+      letter-spacing: 0.05em;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    nav a {
+      color: #fcead1;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffdab9;
+    }
+
+    section {
+      padding: 100px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Главный блок */
+    .hero {
+      background: linear-gradient(to bottom, #d8a37f, #fbe3c1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100vh;
+      padding: 0 20px;
+    }
+
+    .hero h2 {
+      font-size: 3em;
+      color: #4b2e18;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.3em;
+      color: #5b4032;
+      margin-bottom: 40px;
+    }
+
+    .hero .cta-button {
+      padding: 15px 35px;
+      background-color: #4b2e18;
+      color: #fcead1;
+      border: none;
+      border-radius: 25px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .hero .cta-button:hover {
+      background-color: #6b402a;
+      transform: scale(1.05);
+    }
+
+    /* О компании */
+    .about {
+      background-color: #fff4e6;
+      border-radius: 10px;
+      padding: 60px 30px;
+    }
+
+    .about h3 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #4b2e18;
+    }
+
+    .about p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      text-align: center;
+      color: #5b4032;
+    }
+
+    /* Меню */
+    .menu {
+      background-color: #f9e5cf;
+      border-radius: 10px;
+      padding: 60px 30px;
+    }
+
+    .menu h3 {
+      text-align: center;
+      font-size: 2em;
+      color: #4b2e18;
+      margin-bottom: 30px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+    }
+
+    .menu-item {
+      background-color: #fffaf3;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .menu-item img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .menu-item h4 {
+      font-size: 1.2em;
+      color: #4b2e18;
+      margin-bottom: 10px;
+    }
+
+    .menu-item p {
+      font-size: 1em;
+      color: #5b4032;
+    }
+
+    /* Контакты */
+    .contact {
+      background-color: #fff4e6;
+      border-radius: 10px;
+      padding: 60px 30px;
+      text-align: center;
+    }
+
+    .contact h3 {
+      font-size: 2em;
+      color: #4b2e18;
+      margin-bottom: 20px;
+    }
+
+    .contact p {
+      font-size: 1.1em;
+      color: #5b4032;
+      margin-bottom: 10px;
+    }
+
+    /* Подвал */
+    footer {
+      background-color: #4b2e18;
+      color: #fcead1;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 0.9em;
+    }
+
+    /* Адаптация под мобильные устройства */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .hero h2 {
+        font-size: 2.2em;
+      }
+
+      .hero p {
+        font-size: 1.1em;
+      }
+
+      section {
+        padding: 80px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Два пончика и чашка кофе</h1>
+    <nav>
+      <ul>
+        <li><a href="#hero">Главная</a></li>
+        <li><a href="#about">О нас</a></li>
+        <li><a href="#menu">Меню</a></li>
+        <li><a href="#contact">Контакты</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero" id="hero">
+    <h2>Начни день с тепла и аромата</h2>
+    <p>Лучшее место в городе для свежих пончиков и кофе, приготовленного с заботой.</p>
+    <a href="#menu"><button class="cta-button">Посмотреть меню</button></a>
+  </section>
+
+  <section class="about" id="about">
+    <h3>О компании</h3>
+    <p>
+      Кофейня «Два пончика и чашка кофе» родилась из любви к простым радостям жизни.  
+      Мы начали как маленькая семейная пекарня и превратились в тёплое место, где каждый глоток кофе согревает,  
+      а каждый пончик создаёт улыбку. Мы ценим качество, уют и хорошее настроение.
+    </p>
+  </section>
+
+  <section class="menu" id="menu">
+    <h3>Наши фирменные напитки</h3>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93" alt="Латте">
+        <h4>Кремовый латте</h4>
+        <p>Нежный вкус с молочной пенкой, созданный для утреннего вдохновения.</p>
+      </div>
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1510626176961-4b37d6af1a2c" alt="Капучино">
+        <h4>Классический капучино</h4>
+        <p>Баланс насыщенного эспрессо и лёгкости вспененного молока.</p>
+      </div>
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93" alt="Мокко">
+        <h4>Шоколадный мокко</h4>
+        <p>Кофе с нотками какао и сладкой сливочной нежностью.</p>
+      </div>
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772" alt="Фирменный холодный кофе">
+        <h4>Фирменный айс-кофе</h4>
+        <p>Идеальный выбор для жарких дней – бодрящий и освежающий.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h3>Контакты</h3>
+    <p><strong>Адрес:</strong> г. Санкт-Петербург, ул. Кофейная, 12</p>
+    <p><strong>Время работы:</strong> Пн-Вс: 8:00 – 22:00</p>
+    <p><strong>Телефон:</strong> +7 (999) 123-45-67</p>
+  </section>
+
+  <footer>
+    &copy; 2026 Кофейня «Два пончика и чашка кофе». Все права защищены.
+  </footer>
+</body>
+</html>
