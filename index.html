@@ -1,302 +1,676 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Два пончика и чашка кофе</title>
-  <style>
-    /* Общие стили */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-      font-family: 'Segoe UI', sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBER FIT | Фитнес Будущего</title>
+    
+    <!-- Подключение футуристичных шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
 
-    body {
-      background-color: #fffaf3;
-      color: #3b2f2f;
-    }
+    <style>
+        /* ================= ПЕРЕМЕННЫЕ (ДИЗАЙН-ТОКЕНЫ) ================= */
+        :root {
+            --bg-black: #050505;
+            --bg-anthracite: #121212;
+            --bg-panel: rgba(18, 18, 18, 0.6);
+            
+            --neon-blue: #00f3ff;
+            --neon-green: #39ff14;
+            
+            --text-main: #e0e0e0;
+            --text-muted: #888888;
+            
+            --font-display: 'Orbitron', sans-serif;
+            --font-body: 'Rajdhani', sans-serif;
+            
+            --glass-border: 1px solid rgba(0, 243, 255, 0.15);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
 
-    header {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      left: 0;
-      background-color: rgba(85, 53, 33, 0.95);
-      padding: 15px 40px;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: background 0.3s ease;
-    }
+        /* ================= БАЗОВЫЕ НАСТРОЙКИ ================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    header:hover {
-      background-color: rgba(85, 53, 33, 1);
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    header h1 {
-      color: #fcead1;
-      font-size: 1.4em;
-      letter-spacing: 0.05em;
-    }
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-black);
+            color: var(--text-main);
+            overflow-x: hidden;
+            /* Эффект кибер-сетки на фоне */
+            background-image: 
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: center center;
+        }
 
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 25px;
-    }
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
 
-    nav a {
-      color: #fcead1;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
+        /* ================= УТИЛИТЫ И АНИМАЦИИ ================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: var(--transition);
+            transition-duration: 0.8s;
+        }
 
-    nav a:hover {
-      color: #ffdab9;
-    }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    section {
-      padding: 100px 20px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 10px rgba(57, 255, 20, 0.2); transform: scale(1); }
+            50% { box-shadow: 0 0 25px rgba(57, 255, 20, 0.6); transform: scale(1.02); }
+            100% { box-shadow: 0 0 10px rgba(57, 255, 20, 0.2); transform: scale(1); }
+        }
 
-    /* Главный блок */
-    .hero {
-      background: linear-gradient(to bottom, #d8a37f, #fbe3c1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      height: 100vh;
-      padding: 0 20px;
-    }
+        /* Глитч-эффект для заголовка */
+        .glitch {
+            position: relative;
+            color: white;
+            z-index: 1;
+        }
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+        }
+        .glitch::before {
+            color: var(--neon-blue);
+            z-index: -1;
+            animation: glitch-anim 3s infinite linear alternate-reverse;
+        }
+        .glitch::after {
+            color: var(--neon-green);
+            z-index: -2;
+            animation: glitch-anim 2.5s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim {
+            0% { clip-path: inset(10% 0 80% 0); transform: translate(-2px, 2px); }
+            20% { clip-path: inset(80% 0 5% 0); transform: translate(2px, -2px); }
+            40% { clip-path: inset(40% 0 20% 0); transform: translate(-2px, 2px); }
+            60% { clip-path: inset(10% 0 60% 0); transform: translate(2px, 2px); }
+            80% { clip-path: inset(50% 0 30% 0); transform: translate(-2px, -2px); }
+            100% { clip-path: inset(30% 0 50% 0); transform: translate(2px, 2px); }
+        }
 
-    .hero h2 {
-      font-size: 3em;
-      color: #4b2e18;
-      margin-bottom: 20px;
-    }
+        /* ================= ШАПКА (HEADER) ================= */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(5, 5, 5, 0.75);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            z-index: 1000;
+        }
 
-    .hero p {
-      font-size: 1.3em;
-      color: #5b4032;
-      margin-bottom: 40px;
-    }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #fff;
+            text-decoration: none;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
 
-    .hero .cta-button {
-      padding: 15px 35px;
-      background-color: #4b2e18;
-      color: #fcead1;
-      border: none;
-      border-radius: 25px;
-      font-size: 1em;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
-    }
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
 
-    .hero .cta-button:hover {
-      background-color: #6b402a;
-      transform: scale(1.05);
-    }
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: var(--transition);
+            position: relative;
+        }
 
-    /* О компании */
-    .about {
-      background-color: #fff4e6;
-      border-radius: 10px;
-      padding: 60px 30px;
-    }
+        nav a:hover {
+            color: var(--neon-blue);
+            text-shadow: 0 0 8px var(--neon-blue);
+        }
 
-    .about h3 {
-      font-size: 2em;
-      margin-bottom: 20px;
-      text-align: center;
-      color: #4b2e18;
-    }
+        .btn {
+            background: transparent;
+            color: var(--neon-blue);
+            font-family: var(--font-display);
+            border: 1px solid var(--neon-blue);
+            padding: 12px 25px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+            text-decoration: none;
+            display: inline-block;
+        }
 
-    .about p {
-      font-size: 1.1em;
-      line-height: 1.6;
-      text-align: center;
-      color: #5b4032;
-    }
+        .btn:hover {
+            background: rgba(0, 243, 255, 0.1);
+            box-shadow: 0 0 15px var(--neon-blue) inset;
+        }
 
-    /* Меню */
-    .menu {
-      background-color: #f9e5cf;
-      border-radius: 10px;
-      padding: 60px 30px;
-    }
+        .btn-green {
+            color: var(--bg-black);
+            background: var(--neon-green);
+            border: none;
+            font-weight: 700;
+            clip-path: polygon(15% 0, 100% 0, 100% 60%, 85% 100%, 0 100%, 0 40%);
+            animation: pulse-glow 2s infinite;
+        }
 
-    .menu h3 {
-      text-align: center;
-      font-size: 2em;
-      color: #4b2e18;
-      margin-bottom: 30px;
-    }
+        .btn-green:hover {
+            background: #2ce60b;
+            box-shadow: 0 0 20px var(--neon-green);
+        }
 
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 30px;
-    }
+        /* ================= ГЛАВНЫЙ ЭКРАН (HERO) ================= */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 10%;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .menu-item {
-      background-color: #fffaf3;
-      border-radius: 10px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
+        /* Абстрактный градиент на фоне hero */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle at center, rgba(0,243,255,0.05) 0%, transparent 40%);
+            z-index: -1;
+            pointer-events: none;
+        }
 
-    .menu-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
-    }
+        .hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            max-width: 800px;
+        }
 
-    .menu-item img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
+        .hero p {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 600px;
+            border-left: 3px solid var(--neon-blue);
+            padding-left: 15px;
+        }
 
-    .menu-item h4 {
-      font-size: 1.2em;
-      color: #4b2e18;
-      margin-bottom: 10px;
-    }
+        /* ================= СЕКЦИИ (ОБЩИЕ СТИЛИ) ================= */
+        section {
+            padding: 100px 10%;
+        }
 
-    .menu-item p {
-      font-size: 1em;
-      color: #5b4032;
-    }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #fff;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
-    /* Контакты */
-    .contact {
-      background-color: #fff4e6;
-      border-radius: 10px;
-      padding: 60px 30px;
-      text-align: center;
-    }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            bottom: -10px;
+            left: 25%;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+        }
 
-    .contact h3 {
-      font-size: 2em;
-      color: #4b2e18;
-      margin-bottom: 20px;
-    }
+        /* ================= ТЕХНОЛОГИИ (ПРЕИМУЩЕСТВА) ================= */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
 
-    .contact p {
-      font-size: 1.1em;
-      color: #5b4032;
-      margin-bottom: 10px;
-    }
+        .tech-card {
+            background: var(--bg-panel);
+            backdrop-filter: blur(10px);
+            border: var(--glass-border);
+            padding: 40px 30px;
+            clip-path: polygon(0 0, 90% 0, 100% 10%, 100% 100%, 10% 100%, 0 90%);
+            transition: var(--transition);
+            position: relative;
+        }
 
-    /* Подвал */
-    footer {
-      background-color: #4b2e18;
-      color: #fcead1;
-      text-align: center;
-      padding: 20px 0;
-      font-size: 0.9em;
-    }
+        .tech-card::before {
+            content: '0' counter(tech-counter);
+            counter-increment: tech-counter;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.05);
+            font-weight: 900;
+        }
 
-    /* Адаптация под мобильные устройства */
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+        body { counter-reset: tech-counter; }
 
-      nav ul {
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 10px;
-      }
+        .tech-card:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+            transform: translateY(-10px);
+        }
 
-      .hero h2 {
-        font-size: 2.2em;
-      }
+        .tech-card h3 {
+            color: var(--neon-blue);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
 
-      .hero p {
-        font-size: 1.1em;
-      }
+        .tech-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+        }
 
-      section {
-        padding: 80px 15px;
-      }
-    }
-  </style>
+        /* ================= ТРЕНИРОВОЧНЫЕ ЗОНЫ ================= */
+        .zones-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .zone-item {
+            position: relative;
+            height: 350px;
+            background: #111;
+            clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
+            border: 1px solid #333;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .zone-item::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%);
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        /* Имитация картинок через CSS градиенты для автономности кода */
+        .zone-item:nth-child(1) { background: linear-gradient(45deg, #1a1a2e, #16213e); }
+        .zone-item:nth-child(2) { background: linear-gradient(45deg, #0f2027, #203a43); }
+        .zone-item:nth-child(3) { background: linear-gradient(45deg, #000000, #130f40); }
+
+        .zone-item:hover {
+            border-color: var(--neon-green);
+        }
+        
+        .zone-item:hover::before {
+            background: linear-gradient(0deg, rgba(57,255,20,0.4) 0%, rgba(0,0,0,0.2) 100%);
+        }
+
+        .zone-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .zone-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .zone-content p {
+            font-size: 0.9rem;
+            color: var(--neon-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ================= ТАРИФЫ ================= */
+        .pricing-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .price-card {
+            background: var(--bg-panel);
+            border: var(--glass-border);
+            padding: 50px 40px;
+            width: 350px;
+            text-align: center;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%);
+            transition: var(--transition);
+        }
+
+        .price-card:hover {
+            border-color: var(--neon-blue);
+        }
+
+        .price-card.pro {
+            border: 1px solid var(--neon-green);
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.15);
+            transform: scale(1.05);
+            clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
+        }
+
+        .price-card.pro::before {
+            content: 'SYSTEM OVERRIDE';
+            position: absolute;
+            top: 20px; left: -30px;
+            background: var(--neon-green);
+            color: #000;
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 5px 40px;
+            transform: rotate(-45deg);
+        }
+
+        .price-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .price {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+        
+        .price span { font-size: 1rem; color: var(--text-muted); }
+        .pro .price { color: var(--neon-green); text-shadow: 0 0 10px rgba(57,255,20,0.5); }
+
+        .features {
+            list-style: none;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .features li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 10px;
+        }
+
+        .features li::before {
+            content: '/>';
+            color: var(--neon-blue);
+            margin-right: 10px;
+            font-family: var(--font-display);
+        }
+        .pro .features li::before { color: var(--neon-green); }
+
+        /* ================= ФУТЕР И РАДАР ================= */
+        footer {
+            background: var(--bg-anthracite);
+            border-top: 1px solid var(--neon-blue);
+            padding: 80px 10% 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            position: relative;
+        }
+
+        .footer-info h3 { margin-bottom: 20px; color: var(--neon-blue); }
+        .footer-info p { font-size: 1.2rem; margin-bottom: 10px; color: var(--text-muted); }
+        
+        .sys-status {
+            margin-top: 30px;
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            color: var(--neon-green);
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+        }
+
+        /* Голографический Радар (CSS only) */
+        .radar-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .radar {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 2px solid rgba(0, 243, 255, 0.3);
+            position: relative;
+            background: 
+                radial-gradient(circle, transparent 30%, rgba(0, 243, 255, 0.05) 30%, transparent 31%, transparent 60%, rgba(0, 243, 255, 0.05) 60%, transparent 61%),
+                linear-gradient(90deg, transparent 49.5%, rgba(0, 243, 255, 0.3) 49.5%, rgba(0, 243, 255, 0.3) 50.5%, transparent 50.5%),
+                linear-gradient(0deg, transparent 49.5%, rgba(0, 243, 255, 0.3) 49.5%, rgba(0, 243, 255, 0.3) 50.5%, transparent 50.5%);
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.1) inset;
+        }
+
+        .radar::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 125px; height: 125px;
+            background: conic-gradient(from 0deg, transparent 70%, rgba(0, 243, 255, 0.6) 100%);
+            transform-origin: 0 0;
+            animation: scan 4s linear infinite;
+        }
+        
+        /* Маркер на радаре (Анталия) */
+        .radar::after {
+            content: ''; position: absolute;
+            top: 60%; left: 40%; width: 6px; height: 6px;
+            background: var(--neon-green); border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-green);
+            animation: blink 2s infinite;
+        }
+
+        @keyframes scan { 100% { transform: rotate(360deg); } }
+        @keyframes blink { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
+
+        /* ================= АДАПТИВНОСТЬ (MOBILE-FIRST подход с конца) ================= */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 3.5rem; }
+            .zones-gallery { grid-template-columns: 1fr; }
+            .price-card.pro { transform: scale(1); }
+            footer { grid-template-columns: 1fr; text-align: center; }
+            .radar-container { margin-top: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; padding: 15px; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 15px; }
+            .hero h1 { font-size: 2.5rem; margin-top: 80px; }
+            .hero p { font-size: 1.1rem; }
+            section { padding: 60px 5%; }
+            .glitch::before, .glitch::after { display: none; /* Отключаем сложный глитч на мобилках для производительности */ }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Два пончика и чашка кофе</h1>
-    <nav>
-      <ul>
-        <li><a href="#hero">Главная</a></li>
-        <li><a href="#about">О нас</a></li>
-        <li><a href="#menu">Меню</a></li>
-        <li><a href="#contact">Контакты</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <section class="hero" id="hero">
-    <h2>Начни день с тепла и аромата</h2>
-    <p>Лучшее место в городе для свежих пончиков и кофе, приготовленного с заботой.</p>
-    <a href="#menu"><button class="cta-button">Посмотреть меню</button></a>
-  </section>
+    <!-- Шапка -->
+    <header>
+        <a href="#" class="logo">CYBER_FIT</a>
+        <nav>
+            <ul>
+                <li><a href="#tech">Технологии</a></li>
+                <li><a href="#zones">Зоны</a></li>
+                <li><a href="#pricing">Доступ</a></li>
+            </ul>
+        </nav>
+        <a href="#pricing" class="btn">Инициализация</a>
+    </header>
 
-  <section class="about" id="about">
-    <h3>О компании</h3>
-    <p>
-      Кофейня «Два пончика и чашка кофе» родилась из любви к простым радостям жизни.  
-      Мы начали как маленькая семейная пекарня и превратились в тёплое место, где каждый глоток кофе согревает,  
-      а каждый пончик создаёт улыбку. Мы ценим качество, уют и хорошее настроение.
-    </p>
-  </section>
+    <!-- Главный экран -->
+    <section class="hero">
+        <h1 class="glitch reveal" data-text="ТРАНСФОРМИРУЙ ТЕЛО">ТРАНСФОРМИРУЙ ТЕЛО</h1>
+        <h1 class="reveal" style="color: var(--neon-blue); margin-top: -15px;">С ТЕХНОЛОГИЯМИ БУДУЩЕГО</h1>
+        <p class="reveal">Подключись к матрице идеальной формы. ИИ-анализ биометрии и умные тренажеры с AR-экранами уже ждут тебя.</p>
+        <a href="#pricing" class="btn btn-green reveal">Войти в систему</a>
+    </section>
 
-  <section class="menu" id="menu">
-    <h3>Наши фирменные напитки</h3>
-    <div class="menu-grid">
-      <div class="menu-item">
-        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93" alt="Латте">
-        <h4>Кремовый латте</h4>
-        <p>Нежный вкус с молочной пенкой, созданный для утреннего вдохновения.</p>
-      </div>
-      <div class="menu-item">
-        <img src="https://images.unsplash.com/photo-1510626176961-4b37d6af1a2c" alt="Капучино">
-        <h4>Классический капучино</h4>
-        <p>Баланс насыщенного эспрессо и лёгкости вспененного молока.</p>
-      </div>
-      <div class="menu-item">
-        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93" alt="Мокко">
-        <h4>Шоколадный мокко</h4>
-        <p>Кофе с нотками какао и сладкой сливочной нежностью.</p>
-      </div>
-      <div class="menu-item">
-        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772" alt="Фирменный холодный кофе">
-        <h4>Фирменный айс-кофе</h4>
-        <p>Идеальный выбор для жарких дней – бодрящий и освежающий.</p>
-      </div>
-    </div>
-  </section>
+    <!-- Секция Технологий -->
+    <section id="tech">
+        <h2 class="section-title reveal">Инновации Системы</h2>
+        <div class="tech-grid">
+            <div class="tech-card reveal">
+                <h3>Нейро-Анализ Биометрии</h3>
+                <p>Искусственный интеллект сканирует ваше тело до начала тренировки, определяя оптимальные нагрузки, пульс и мышечный тонус в реальном времени.</p>
+            </div>
+            <div class="tech-card reveal">
+                <h3>AR-Тренажеры</h3>
+                <p>Голографические дисплеи на каждом снаряде. Соревнуйтесь с виртуальными противниками или своим призраком с прошлой тренировки.</p>
+            </div>
+            <div class="tech-card reveal">
+                <h3>Умные EMS-Симбионты</h3>
+                <p>Костюмы электромиостимуляции последнего поколения, интегрированные с центральной нейросетью зала для микро-сокращений мышц.</p>
+            </div>
+        </div>
+    </section>
 
-  <section class="contact" id="contact">
-    <h3>Контакты</h3>
-    <p><strong>Адрес:</strong> г. Санкт-Петербург, ул. Кофейная, 12</p>
-    <p><strong>Время работы:</strong> Пн-Вс: 8:00 – 22:00</p>
-    <p><strong>Телефон:</strong> +7 (999) 123-45-67</p>
-  </section>
+    <!-- Тренировочные зоны -->
+    <section id="zones">
+        <h2 class="section-title reveal">Сектора Тренировок</h2>
+        <div class="zones-gallery">
+            <div class="zone-item reveal">
+                <div class="zone-content">
+                    <p>Сектор 01</p>
+                    <h3>Гравитационная Зона (Веса)</h3>
+                </div>
+            </div>
+            <div class="zone-item reveal">
+                <div class="zone-content">
+                    <p>Сектор 02</p>
+                    <h3>Кинетическая Кардио-Палуба</h3>
+                </div>
+            </div>
+            <div class="zone-item reveal">
+                <div class="zone-content">
+                    <p>Сектор 03</p>
+                    <h3>VR-Арена (Боевые искусства)</h3>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    &copy; 2026 Кофейня «Два пончика и чашка кофе». Все права защищены.
-  </footer>
+    <!-- Тарифы -->
+    <section id="pricing">
+        <h2 class="section-title reveal">Уровни Доступа</h2>
+        <div class="pricing-grid">
+            
+            <!-- Базовый тариф -->
+            <div class="price-card reveal">
+                <h3>СТАНДАРТ</h3>
+                <div class="price">5000 <span>₺ / мес</span></div>
+                <ul class="features">
+                    <li>Доступ ко всем базовым секторам</li>
+                    <li>Шкафчик с биометрическим замком</li>
+                    <li>Базовый анализ состава тела</li>
+                </ul>
+                <button class="btn">Выбрать</button>
+            </div>
+
+            <!-- PRO тариф -->
+            <div class="price-card pro reveal">
+                <h3>СИМБИОТ (PRO)</h3>
+                <div class="price">9000 <span>₺ / мес</span></div>
+                <ul class="features">
+                    <li>Полная интеграция с ИИ</li>
+                    <li>Выдача персональных смарт-датчиков</li>
+                    <li>Доступ в VR-Арену и EMS</li>
+                    <li>Кибер-протеиновый бар (безлимит)</li>
+                </ul>
+                <button class="btn btn-green">Получить доступ</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="footer-info reveal">
+            <h3>CYBER FIT HUB</h3>
+            <p><strong>Локация:</strong> г. Анталия, Турция</p>
+            <p><strong>Комм-канал:</strong> +90 999 101-01-01</p>
+            <p><strong>Координаты:</strong> 36.8969° N, 30.7133° E</p>
+            
+            <div class="sys-status">
+                СТАТУС: СЕРВЕРА АКТИВНЫ // ОЖИДАНИЕ ПОЛЬЗОВАТЕЛЕЙ...
+            </div>
+        </div>
+        
+        <div class="radar-container reveal">
+            <div class="radar"></div>
+        </div>
+    </footer>
+
+    <!-- Скрипт для анимации появления при скролле -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+
+            const revealOnScroll = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Анимация проигрывается 1 раз
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.15 // Срабатывает, когда 15% элемента видно
+            });
+
+            reveals.forEach(el => revealOnScroll.observe(el));
+        });
+    </script>
 </body>
 </html>
