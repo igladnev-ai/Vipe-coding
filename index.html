@@ -163,6 +163,9 @@
         }
 
         .language-switch .lang-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             border: 1px solid rgba(255, 255, 255, 0.25);
             background: transparent;
             color: var(--text-main);
@@ -173,6 +176,15 @@
             letter-spacing: 1px;
             cursor: pointer;
             transition: var(--transition);
+        }
+
+        .language-switch .lang-flag {
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .language-switch .lang-label {
+            font-size: 0.8rem;
         }
 
         .language-switch .lang-btn.active {
@@ -571,9 +583,15 @@
             </ul>
         </nav>
         <div class="language-switch">
-            <button class="lang-btn active" data-lang="turkish" aria-label="Turkish">TR</button>
-            <button class="lang-btn" data-lang="english" aria-label="English">EN</button>
-            <button class="lang-btn" data-lang="russian" aria-label="Russian">RU</button>
+            <button type="button" class="lang-btn active" data-lang="turkish" aria-label="Türkçe">
+                <span class="lang-flag" aria-hidden="true">🇹🇷</span><span class="lang-label">TR</span>
+            </button>
+            <button type="button" class="lang-btn" data-lang="english" aria-label="English">
+                <span class="lang-flag" aria-hidden="true">🇬🇧</span><span class="lang-label">EN</span>
+            </button>
+            <button type="button" class="lang-btn" data-lang="russian" aria-label="Русский">
+                <span class="lang-flag" aria-hidden="true">🇷🇺</span><span class="lang-label">RU</span>
+            </button>
         </div>
         <a href="#pricing" class="btn" data-i18n="hero.button">Sisteme Giriş</a>
     </header>
