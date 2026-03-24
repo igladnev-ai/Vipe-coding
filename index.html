@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CYBER FIT | Фитнес Будущего!</title>
+    <title>CYBER FIT | Fitness of the Future!</title>
     
-    <!-- Подключение футуристичных шрифтов -->
+    <!-- Futuristic font stack -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* ================= ПЕРЕМЕННЫЕ (ДИЗАЙН-ТОКЕНЫ) ================= */
+        /* ================= VARIABLES (DESIGN TOKENS) ================= */
         :root {
             --bg-black: #050505;
             --bg-anthracite: #121212;
@@ -30,7 +30,7 @@
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        /* ================= БАЗОВЫЕ НАСТРОЙКИ ================= */
+        /* ================= BASE SETTINGS ================= */
         * {
             margin: 0;
             padding: 0;
@@ -46,7 +46,7 @@
             background-color: var(--bg-black);
             color: var(--text-main);
             overflow-x: hidden;
-            /* Эффект кибер-сетки на фоне */
+            /* Cyber grid background effect */
             background-image: 
                 linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
@@ -60,7 +60,7 @@
             letter-spacing: 2px;
         }
 
-        /* ================= УТИЛИТЫ И АНИМАЦИИ ================= */
+        /* ================= UTILITIES & ANIMATIONS ================= */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -79,7 +79,7 @@
             100% { box-shadow: 0 0 10px rgba(57, 255, 20, 0.2); transform: scale(1); }
         }
 
-        /* Глитч-эффект для заголовка */
+        /* Glitch effect for the headline */
         .glitch {
             position: relative;
             color: white;
@@ -113,7 +113,7 @@
             100% { clip-path: inset(30% 0 50% 0); transform: translate(2px, 2px); }
         }
 
-        /* ================= ШАПКА (HEADER) ================= */
+        /* ================= HEADER ================= */
         header {
             position: fixed;
             top: 0;
@@ -157,6 +157,30 @@
             text-shadow: 0 0 8px var(--neon-blue);
         }
 
+        .language-switch {
+            display: flex;
+            gap: 8px;
+        }
+
+        .language-switch .lang-btn {
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: transparent;
+            color: var(--text-main);
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            padding: 6px 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .language-switch .lang-btn.active {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
+            color: var(--neon-blue);
+        }
+
         .btn {
             background: transparent;
             color: var(--neon-blue);
@@ -193,7 +217,7 @@
             box-shadow: 0 0 20px var(--neon-green);
         }
 
-        /* ================= ГЛАВНЫЙ ЭКРАН (HERO) ================= */
+        /* ================= HERO ================= */
         .hero {
             height: 100vh;
             display: flex;
@@ -205,7 +229,7 @@
             overflow: hidden;
         }
 
-        /* Абстрактный градиент на фоне hero */
+        /* Abstract gradient overlay for the hero background */
         .hero::before {
             content: '';
             position: absolute;
@@ -231,7 +255,7 @@
             padding-left: 15px;
         }
 
-        /* ================= СЕКЦИИ (ОБЩИЕ СТИЛИ) ================= */
+        /* ================= SECTIONS (COMMON STYLES) ================= */
         section {
             padding: 100px 10%;
         }
@@ -257,7 +281,7 @@
             background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
         }
 
-        /* ================= ТЕХНОЛОГИИ (ПРЕИМУЩЕСТВА) ================= */
+        /* ================= TECHNOLOGIES (ADVANTAGES) ================= */
         .tech-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -306,7 +330,7 @@
             color: var(--text-muted);
         }
 
-        /* ================= ТРЕНИРОВОЧНЫЕ ЗОНЫ ================= */
+        /* ================= TRAINING ZONES ================= */
         .zones-gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -336,7 +360,7 @@
             transition: var(--transition);
         }
 
-        /* Имитация картинок через CSS градиенты для автономности кода */
+        /* Simulated imagery via CSS gradients for code self-sufficiency */
         .zone-item:nth-child(1) { background: linear-gradient(45deg, #1a1a2e, #16213e); }
         .zone-item:nth-child(2) { background: linear-gradient(45deg, #0f2027, #203a43); }
         .zone-item:nth-child(3) { background: linear-gradient(45deg, #000000, #130f40); }
@@ -367,7 +391,7 @@
             letter-spacing: 1px;
         }
 
-        /* ================= ТАРИФЫ ================= */
+        /* ================= PRICING ================= */
         .pricing-grid {
             display: flex;
             justify-content: center;
@@ -448,7 +472,7 @@
         }
         .pro .features li::before { color: var(--neon-green); }
 
-        /* ================= ФУТЕР И РАДАР ================= */
+        /* ================= FOOTER & RADAR ================= */
         footer {
             background: var(--bg-anthracite);
             border-top: 1px solid var(--neon-blue);
@@ -472,7 +496,7 @@
             font-size: 0.9rem;
         }
 
-        /* Голографический Радар (CSS only) */
+        /* Holographic Radar (CSS only) */
         .radar-container {
             display: flex;
             justify-content: center;
@@ -503,7 +527,7 @@
             animation: scan 4s linear infinite;
         }
         
-        /* Маркер на радаре (Анталия) */
+        /* Radar marker (Antalya) */
         .radar::after {
             content: ''; position: absolute;
             top: 60%; left: 40%; width: 6px; height: 6px;
@@ -515,7 +539,7 @@
         @keyframes scan { 100% { transform: rotate(360deg); } }
         @keyframes blink { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
 
-        /* ================= АДАПТИВНОСТЬ (MOBILE-FIRST подход с конца) ================= */
+        /* ================= RESPONSIVENESS (MOBILE-FIRST from the ground up) ================= */
         @media (max-width: 992px) {
             .hero h1 { font-size: 3.5rem; }
             .zones-gallery { grid-template-columns: 1fr; }
@@ -530,120 +554,125 @@
             .hero h1 { font-size: 2.5rem; margin-top: 80px; }
             .hero p { font-size: 1.1rem; }
             section { padding: 60px 5%; }
-            .glitch::before, .glitch::after { display: none; /* Отключаем сложный глитч на мобилках для производительности */ }
+            .glitch::before, .glitch::after { display: none; /* Disable the complex glitch on mobile for performance */ }
         }
     </style>
 </head>
 <body>
 
-    <!-- Шапка -->
+    <!-- Header -->
     <header>
         <a href="#" class="logo">CYBER_FIT</a>
         <nav>
             <ul>
-                <li><a href="#tech">Технологии</a></li>
-                <li><a href="#zones">Зоны</a></li>
-                <li><a href="#pricing">Доступ</a></li>
+                <li><a href="#tech" data-i18n="nav.technologies">Teknolojiler</a></li>
+                <li><a href="#zones" data-i18n="nav.zones">Sektörler</a></li>
+                <li><a href="#pricing" data-i18n="nav.pricing">Erişim</a></li>
             </ul>
         </nav>
-        <a href="#pricing" class="btn">Инициализация</a>
+        <div class="language-switch">
+            <button class="lang-btn active" data-lang="turkish" aria-label="Turkish">TR</button>
+            <button class="lang-btn" data-lang="english" aria-label="English">EN</button>
+            <button class="lang-btn" data-lang="russian" aria-label="Russian">RU</button>
+        </div>
+        <a href="#pricing" class="btn" data-i18n="hero.button">Sisteme Giriş</a>
     </header>
 
-    <!-- Главный экран -->
+    <!-- Hero Section -->
     <section class="hero">
-        <h1 class="glitch reveal" data-text="ТРАНСФОРМИРУЙ ТЕЛО">ТРАНСФОРМИРУЙ ТЕЛО</h1>
-        <h1 class="reveal" style="color: var(--neon-blue); margin-top: -15px;">С ТЕХНОЛОГИЯМИ БУДУЩЕГО</h1>
-        <p class="reveal">Подключись к матрице идеальной формы. ИИ-анализ биометрии и умные тренажеры с AR-экранами уже ждут тебя.</p>
-        <a href="#pricing" class="btn btn-green reveal">Войти в систему</a>
+        <h1 class="glitch reveal" data-i18n="hero.title1" data-text="BEDENİNİ DÖNÜŞTÜR">BEDENİNİ DÖNÜŞTÜR</h1>
+        <h1 class="reveal" data-i18n="hero.title2" style="color: var(--neon-blue); margin-top: -15px;">YARININ TEKNOLOJİSİYLE</h1>
+        <p class="reveal" data-i18n="hero.description">Maksimum forma bağlan. Yapay zeka biyometrik analizi ve AR destekli akıllı makineler seni bekliyor.</p>
+        <a href="#pricing" class="btn btn-green reveal" data-i18n="hero.button">Sisteme Giriş</a>
     </section>
 
-    <!-- Секция Технологий -->
+    <!-- Technology Section -->
     <section id="tech">
-        <h2 class="section-title reveal">Инновации Системы</h2>
+        <h2 class="section-title reveal" data-i18n="sections.tech">Sistem Yenilikleri</h2>
         <div class="tech-grid">
             <div class="tech-card reveal">
-                <h3>Нейро-Анализ Биометрии</h3>
-                <p>Искусственный интеллект сканирует ваше тело до начала тренировки, определяя оптимальные нагрузки, пульс и мышечный тонус в реальном времени.</p>
+                <h3 data-i18n="tech.0.title">Nöro Biyometrik Analiz</h3>
+                <p data-i18n="tech.0.desc">Yapay zeka antrenman başlamadan önce bedenini tarar, ideal yüklenmeleri, nabzı ve kas tonusunu anlık belirler.</p>
             </div>
             <div class="tech-card reveal">
-                <h3>AR-Тренажеры</h3>
-                <p>Голографические дисплеи на каждом снаряде. Соревнуйтесь с виртуальными противниками или своим призраком с прошлой тренировки.</p>
+                <h3 data-i18n="tech.1.title">AR Ekipmanları</h3>
+                <p data-i18n="tech.1.desc">Her cihazda holografik ekranlar. Sanal rakiplerle veya geçmiş antrenmanındaki hayaletinle kapış.</p>
             </div>
             <div class="tech-card reveal">
-                <h3>Умные EMS-Симбионты</h3>
-                <p>Костюмы электромиостимуляции последнего поколения, интегрированные с центральной нейросетью зала для микро-сокращений мышц.</p>
+                <h3 data-i18n="tech.2.title">Akıllı EMS Sembiyotları</h3>
+                <p data-i18n="tech.2.desc">Son nesil elektro uyarım kıyafetleri, salonun merkezi sinir ağına bağlanarak mikro kas kasılmaları üretir.</p>
             </div>
         </div>
     </section>
 
-    <!-- Тренировочные зоны -->
+    <!-- Training Zones -->
     <section id="zones">
-        <h2 class="section-title reveal">Сектора Тренировок</h2>
+        <h2 class="section-title reveal" data-i18n="sections.zones">Antrenman Sektörleri</h2>
         <div class="zones-gallery">
             <div class="zone-item reveal">
                 <div class="zone-content">
-                    <p>Сектор 01</p>
-                    <h3>Гравитационная Зона (Веса)</h3>
+                    <p data-i18n="zones.0.sector">Sektör 01</p>
+                    <h3 data-i18n="zones.0.title">Yerçekimi Bölgesi (Ağırlıklar)</h3>
                 </div>
             </div>
             <div class="zone-item reveal">
                 <div class="zone-content">
-                    <p>Сектор 02</p>
-                    <h3>Кинетическая Кардио-Палуба</h3>
+                    <p data-i18n="zones.1.sector">Sektör 02</p>
+                    <h3 data-i18n="zones.1.title">Kinetik Kardiyo Güvertesi</h3>
                 </div>
             </div>
             <div class="zone-item reveal">
                 <div class="zone-content">
-                    <p>Сектор 03</p>
-                    <h3>VR-Арена (Боевые искусства)</h3>
+                    <p data-i18n="zones.2.sector">Sektör 03</p>
+                    <h3 data-i18n="zones.2.title">VR Arenası (Dövüş Sanatları)</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Тарифы -->
+    <!-- Pricing -->
     <section id="pricing">
-        <h2 class="section-title reveal">Уровни Доступа</h2>
+        <h2 class="section-title reveal" data-i18n="sections.pricing">Erişim Katmanları</h2>
         <div class="pricing-grid">
             
-            <!-- Базовый тариф -->
+            <!-- Standard Tier -->
             <div class="price-card reveal">
-                <h3>СТАНДАРТ</h3>
-                <div class="price">5000 <span>₺ / мес</span></div>
-                <ul class="features">
-                    <li>Доступ ко всем базовым секторам</li>
-                    <li>Шкафчик с биометрическим замком</li>
-                    <li>Базовый анализ состава тела</li>
+                <h3 data-i18n="pricing.standardTitle">STANDART</h3>
+                <div class="price">5000 <span data-i18n="pricing.priceSuffix">₺ / ay</span></div>
+                <ul class="features" id="features-standard">
+                    <li>Tüm temel sektörlere erişim</li>
+                    <li>Biyometrik kilitli dolap</li>
+                    <li>Temel vücut kompozisyon analizi</li>
                 </ul>
-                <button class="btn">Выбрать</button>
+                <button class="btn" data-i18n="pricing.standardButton">Seç</button>
             </div>
 
-            <!-- PRO тариф -->
+            <!-- Pro Tier -->
             <div class="price-card pro reveal">
-                <h3>СИМБИОТ (PRO)</h3>
-                <div class="price">9000 <span>₺ / мес</span></div>
-                <ul class="features">
-                    <li>Полная интеграция с ИИ</li>
-                    <li>Выдача персональных смарт-датчиков</li>
-                    <li>Доступ в VR-Арену и EMS</li>
-                    <li>Кибер-протеиновый бар (безлимит)</li>
+                <h3 data-i18n="pricing.proTitle">SİMBİYOT (PRO)</h3>
+                <div class="price">9000 <span data-i18n="pricing.priceSuffix">₺ / ay</span></div>
+                <ul class="features" id="features-pro">
+                    <li>Tam yapay zeka entegrasyonu</li>
+                    <li>Kişisel akıllı sensör teslimi</li>
+                    <li>VR Arenası ve EMS erişimi</li>
+                    <li>Sınırsız siber protein barı</li>
                 </ul>
-                <button class="btn btn-green">Получить доступ</button>
+                <button class="btn btn-green" data-i18n="pricing.proButton">Erişimi Aç</button>
             </div>
 
         </div>
     </section>
 
-    <!-- Футер -->
+    <!-- Footer -->
     <footer>
         <div class="footer-info reveal">
             <h3>CYBER FIT HUB</h3>
-            <p><strong>Локация:</strong> г. Анталия, Турция</p>
-            <p><strong>Комм-канал:</strong> +90 999 101-01-01</p>
-            <p><strong>Координаты:</strong> 36.8969° N, 30.7133° E</p>
+            <p><strong data-i18n="footer.locationLabel">Lokasyon:</strong> <span data-i18n="footer.locationValue">Antalya, Türkiye</span></p>
+            <p><strong data-i18n="footer.commLabel">İletişim Kanalı:</strong> +90 999 101-01-01</p>
+            <p><strong data-i18n="footer.coordsLabel">Koordinatlar:</strong> 36.8969° N, 30.7133° E</p>
             
-            <div class="sys-status">
-                СТАТУС: СЕРВЕРА АКТИВНЫ // ОЖИДАНИЕ ПОЛЬЗОВАТЕЛЕЙ...
+            <div class="sys-status" data-i18n="footer.status">
+                DURUM: SUNUCULAR AÇIK // ÜYELERİ BEKLİYOR...
             </div>
         </div>
         
@@ -652,7 +681,7 @@
         </div>
     </footer>
 
-    <!-- Скрипт для анимации появления при скролле -->
+    <!-- Scroll reveal animation script -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const reveals = document.querySelectorAll('.reveal');
@@ -661,15 +690,228 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
-                        observer.unobserve(entry.target); // Анимация проигрывается 1 раз
+                        observer.unobserve(entry.target); // Animation plays once
                     }
                 });
             }, {
                 root: null,
-                threshold: 0.15 // Срабатывает, когда 15% элемента видно
+                threshold: 0.15 // Triggers when 15% of the element is visible
             });
 
             reveals.forEach(el => revealOnScroll.observe(el));
+
+            const translations = {
+                turkish: {
+                    nav: { technologies: 'Teknolojiler', zones: 'Sektörler', pricing: 'Erişim' },
+                    hero: {
+                        title1: 'BEDENİNİ DÖNÜŞTÜR',
+                        title2: 'YARININ TEKNOLOJİSİYLE',
+                        description: 'Maksimum forma bağlan. Yapay zeka biyometrik analizi ve AR destekli akıllı makineler seni bekliyor.',
+                        button: 'Sisteme Giriş'
+                    },
+                    sections: { tech: 'Sistem Yenilikleri', zones: 'Antrenman Sektörleri', pricing: 'Erişim Katmanları' },
+                    tech: [
+                        {
+                            title: 'Nöro Biyometrik Analiz',
+                            desc: 'Yapay zeka antrenman başlamadan önce bedenini tarar, ideal yüklenmeleri, nabzı ve kas tonusunu anlık belirler.'
+                        },
+                        {
+                            title: 'AR Ekipmanları',
+                            desc: 'Her cihazda holografik ekranlar. Sanal rakiplerle veya geçmiş antrenmanındaki hayaletinle kapış.'
+                        },
+                        {
+                            title: 'Akıllı EMS Sembiyotları',
+                            desc: 'Son nesil elektro uyarım kıyafetleri, salonun merkezi sinir ağına bağlanarak mikro kas kasılmaları üretir.'
+                        }
+                    ],
+                    zones: [
+                        { sector: 'Sektör 01', title: 'Yerçekimi Bölgesi (Ağırlıklar)' },
+                        { sector: 'Sektör 02', title: 'Kinetik Kardiyo Güvertesi' },
+                        { sector: 'Sektör 03', title: 'VR Arenası (Dövüş Sanatları)' }
+                    ],
+                    pricing: {
+                        standardTitle: 'STANDART',
+                        proTitle: 'SİMBİYOT (PRO)',
+                        priceSuffix: '₺ / ay',
+                        standardButton: 'Seç',
+                        proButton: 'Erişimi Aç',
+                        features: {
+                            standard: [
+                                'Tüm temel sektörlere erişim',
+                                'Biyometrik kilitli dolap',
+                                'Temel vücut kompozisyon analizi'
+                            ],
+                            pro: [
+                                'Tam yapay zeka entegrasyonu',
+                                'Kişisel akıllı sensör teslimi',
+                                'VR Arenası ve EMS erişimi',
+                                'Sınırsız siber protein barı'
+                            ]
+                        }
+                    },
+                    footer: {
+                        locationLabel: 'Lokasyon:',
+                        locationValue: 'Antalya, Türkiye',
+                        commLabel: 'İletişim Kanalı:',
+                        coordsLabel: 'Koordinatlar:',
+                        status: 'DURUM: SUNUCULAR AÇIK // ÜYELERİ BEKLİYOR...'
+                    }
+                },
+                english: {
+                    nav: { technologies: 'Technologies', zones: 'Zones', pricing: 'Access' },
+                    hero: {
+                        title1: 'TRANSFORM YOUR BODY',
+                        title2: "WITH TOMORROW'S TECHNOLOGY",
+                        description: 'Plug into the matrix of peak form. AI biometric analysis and smart AR-equipped machines are already waiting for you.',
+                        button: 'Enter the System'
+                    },
+                    sections: { tech: 'System Innovations', zones: 'Training Sectors', pricing: 'Access Tiers' },
+                    tech: [
+                        {
+                            title: 'Neuro Biometrics',
+                            desc: 'AI scans your body before the workout, dialing in optimal loads, pulse, and muscle tone in real time.'
+                        },
+                        {
+                            title: 'AR Machines',
+                            desc: 'Holographic displays on every apparatus. Compete with virtual rivals or your shadow from past sessions.'
+                        },
+                        {
+                            title: 'Smart EMS Symbionts',
+                            desc: "Next-gen electrostimulation suits linked to the club's neural network for micro-muscle contractions."
+                        }
+                    ],
+                    zones: [
+                        { sector: 'Sector 01', title: 'Gravity Zone (Weights)' },
+                        { sector: 'Sector 02', title: 'Kinetic Cardio Deck' },
+                        { sector: 'Sector 03', title: 'VR Arena (Combat Arts)' }
+                    ],
+                    pricing: {
+                        standardTitle: 'STANDARD',
+                        proTitle: 'SYMBIONT (PRO)',
+                        priceSuffix: '₺ / mo',
+                        standardButton: 'Choose',
+                        proButton: 'Unlock Access',
+                        features: {
+                            standard: [
+                                'Access to all base sectors',
+                                'Biometric locker',
+                                'Basic body composition analysis'
+                            ],
+                            pro: [
+                                'Full AI integration',
+                                'Provision of personal smart sensors',
+                                'Access to the VR Arena and EMS',
+                                'Cyber protein bar (unlimited)'
+                            ]
+                        }
+                    },
+                    footer: {
+                        locationLabel: 'Location:',
+                        locationValue: 'Antalya, Turkey',
+                        commLabel: 'Comm Channel:',
+                        coordsLabel: 'Coordinates:',
+                        status: 'STATUS: SERVERS ONLINE // AWAITING MEMBERS...'
+                    }
+                },
+                russian: {
+                    nav: { technologies: 'Технологии', zones: 'Зоны', pricing: 'Доступ' },
+                    hero: {
+                        title1: 'ТРАНСФОРМИРУЙ ТЕЛО',
+                        title2: 'С ТЕХНОЛОГИЯМИ БУДУЩЕГО',
+                        description: 'Подключись к матрице идеальной формы. ИИ-анализ биометрии и умные тренажеры с AR-экранами уже ждут тебя.',
+                        button: 'Войти в систему'
+                    },
+                    sections: { tech: 'Инновации Системы', zones: 'Сектора Тренировок', pricing: 'Уровни Доступа' },
+                    tech: [
+                        {
+                            title: 'Нейро-Анализ Биометрии',
+                            desc: 'Искусственный интеллект сканирует ваше тело до начала тренировки, определяя оптимальные нагрузки, пульс и мышечный тонус в реальном времени.'
+                        },
+                        {
+                            title: 'AR-Тренажеры',
+                            desc: 'Голографические дисплеи на каждом снаряде. Соревнуйтесь с виртуальными противниками или своим призраком с прошлой тренировки.'
+                        },
+                        {
+                            title: 'Умные EMS-Симбионты',
+                            desc: 'Костюмы электромиостимуляции последнего поколения, интегрированные с центральной нейросетью зала для микро-сокращений мышц.'
+                        }
+                    ],
+                    zones: [
+                        { sector: 'Сектор 01', title: 'Гравитационная Зона (Веса)' },
+                        { sector: 'Сектор 02', title: 'Кинетическая Кардио-Палуба' },
+                        { sector: 'Сектор 03', title: 'VR-Арена (Боевые искусства)' }
+                    ],
+                    pricing: {
+                        standardTitle: 'СТАНДАРТ',
+                        proTitle: 'СИМБИОТ (PRO)',
+                        priceSuffix: '₺ / мес',
+                        standardButton: 'Выбрать',
+                        proButton: 'Получить доступ',
+                        features: {
+                            standard: [
+                                'Доступ ко всем базовым секторам',
+                                'Шкафчик с биометрическим замком',
+                                'Базовый анализ состава тела'
+                            ],
+                            pro: [
+                                'Полная интеграция с ИИ',
+                                'Выдача персональных смарт-датчиков',
+                                'Доступ в VR-Арену и EMS',
+                                'Кибер-протеиновый бар (безлимит)'
+                            ]
+                        }
+                    },
+                    footer: {
+                        locationLabel: 'Локация:',
+                        locationValue: 'г. Анталия, Турция',
+                        commLabel: 'Комм-канал:',
+                        coordsLabel: 'Координаты:',
+                        status: 'СТАТУС: СЕРВЕРА АКТИВНЫ // ОЖИДАНИЕ ПОЛЬЗОВАТЕЛЕЙ...'
+                    }
+                }
+            };
+
+            const getTranslation = (lang, path) => {
+                const keys = path.split('.');
+                return keys.reduce((value, key) => (value && value[key] !== undefined ? value[key] : undefined), translations[lang]);
+            };
+
+            const updateFeatureList = (id, items) => {
+                const container = document.getElementById(id);
+                if (!container) return;
+                container.innerHTML = items.map(text => `<li>${text}</li>`).join('');
+            };
+
+            const applyLanguage = lang => {
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const translation = getTranslation(lang, el.dataset.i18n);
+                    if (translation !== undefined) {
+                        el.textContent = translation;
+                    }
+                });
+
+                const glitchTitle = document.querySelector('.glitch');
+                if (glitchTitle) {
+                    const textVal = getTranslation(lang, 'hero.title1');
+                    if (textVal) {
+                        glitchTitle.dataset.text = textVal;
+                    }
+                }
+
+                updateFeatureList('features-standard', translations[lang].pricing.features.standard);
+                updateFeatureList('features-pro', translations[lang].pricing.features.pro);
+            };
+
+            const languageButtons = document.querySelectorAll('.language-switch .lang-btn');
+            languageButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const selectedLang = btn.dataset.lang;
+                    languageButtons.forEach(button => button.classList.toggle('active', button === btn));
+                    applyLanguage(selectedLang);
+                });
+            });
+
+            applyLanguage('turkish');
         });
     </script>
 </body>
